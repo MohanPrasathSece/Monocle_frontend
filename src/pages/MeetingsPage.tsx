@@ -111,7 +111,12 @@ export default function MeetingsPage() {
             resetForm();
         },
         onError: (error: any) => {
-            toast.error(error.message || 'Failed to create meeting');
+            const errorMessage = error.response?.data?.error || error.message || 'Failed to create meeting';
+            toast.error(errorMessage);
+
+            if (errorMessage.includes('not connected')) {
+                toast.info('Please connect your Microsoft account in the Integrations tab.');
+            }
         }
     });
 
@@ -131,6 +136,12 @@ export default function MeetingsPage() {
             toast.error('Please fill in all required fields');
             return;
         }
+
+        if (formData.platform === 'teams' && !currentUser?.integrations?.microsoft?.connected) {
+            toast.error('Microsoft Teams integration NOT connected');
+            // But we'll still let the request proceed to see the backend error if they think they are connected
+        }
+
         createMeetingMutation.mutate(formData);
     };
 

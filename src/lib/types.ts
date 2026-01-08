@@ -8,6 +8,11 @@ export interface User {
   createdAt: Date;
   lastLogin?: Date;
   preferences?: UserPreferences;
+  integrations?: {
+    google?: { connected: boolean; email?: string };
+    microsoft?: { connected: boolean; email?: string };
+    notion?: { connected: boolean };
+  };
 }
 
 export interface UserPreferences {

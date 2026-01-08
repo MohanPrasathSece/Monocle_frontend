@@ -1,13 +1,7 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import axios from 'axios';
-
-interface User {
-    id: string;
-    name: string;
-    email: string;
-    avatar?: string;
-}
+import { User } from '@/lib/types';
 
 interface AuthContextType {
     currentUser: User | null;
