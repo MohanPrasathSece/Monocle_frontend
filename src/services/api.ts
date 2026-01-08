@@ -197,6 +197,26 @@ export const IntegrationService = {
     syncNotion: async (apiKey: string) => {
         const response = await api.post('/integrations/notion/sync', { apiKey });
         return response.data;
+    },
+    createGoogleMeeting: async (meetingData: {
+        title: string;
+        description: string;
+        startTime: string;
+        endTime: string;
+        attendees: string[];
+    }) => {
+        const response = await api.post('/integrations/google/calendar/create', meetingData);
+        return response.data;
+    },
+    createTeamsMeeting: async (meetingData: {
+        title: string;
+        description: string;
+        startTime: string;
+        endTime: string;
+        attendees: string[];
+    }) => {
+        const response = await api.post('/integrations/microsoft/teams/create', meetingData);
+        return response.data;
     }
 };
 

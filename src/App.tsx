@@ -16,6 +16,7 @@ import IntegrationsPage from "./pages/IntegrationsPage";
 import TeamsPage from "./pages/TeamsPage";
 import TeamDetailsPage from "./pages/TeamDetailsPage";
 import InviteAcceptPage from "./pages/InviteAcceptPage";
+import MeetingsPage from "./pages/MeetingsPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import NotFound from "./pages/NotFound";
@@ -76,6 +77,14 @@ const App = () => (
                   element={
                     <ProtectedRoute>
                       <IntegrationsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/meetings"
+                  element={
+                    <ProtectedRoute>
+                      <MeetingsPage />
                     </ProtectedRoute>
                   }
                 />
